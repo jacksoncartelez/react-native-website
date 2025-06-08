@@ -1,4 +1,9 @@
----
+fixitnow/
+├── backend/                # Node.js + Express
+├── mobile-customer/        # React Native Customer App
+├── mobile-handyman/        # React Native Handyman App
+├── shared/                 # Shared components, types, utils
+└── admin-dashboard/        # Optional (React web dashboard)---
 id: environment-setup
 title: Get Started with React Native
 hide_table_of_contents: true
