@@ -1,4 +1,39 @@
----
+--const express = require('express');
+const mongoose = require('mongoose');
+const cors = require('cors');
+const dotenv = require('dotenv');
+
+// Load env vars
+dotenv.config();
+
+// Initialize app
+const app = express();
+app.use(express.json());
+app.use(cors());
+
+// MongoDB Connection
+mongoose.connect(process.env.MONGO_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => console.log("MongoDB Connected"))
+.catch(err => console.log(err));
+
+// Routes
+app.get('/', (req, res) => {
+  res.send("FixItNow API is running");
+});
+
+// Sample route
+app.get('/api/test', (req, res) => {
+  res.json({ message: "API is working!" });
+});
+
+// Port
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});-
 id: environment-setup
 title: Get Started with React Native
 hide_table_of_contents: true
@@ -47,3 +82,52 @@ npx create-expo-app@latest
 Once you’ve created your app, check out the rest of Expo’s getting started guide to start developing your app.
 
 <BoxLink href="https://docs.expo.dev/get-started/set-up-your-environment">Continue with Expo</BoxLink>
+{
+  "name": "fixitnow-backend",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^7.0.3"
+  }
+}npx create-expo-app fixitnow-customer
+cd fixitnow-customer
+npx expo startimport React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <Text>Welcome to FixItNow!</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+});import React from 'react';
+import { View, Text, StyleSheet } from 'react-native';
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <Text>Welcome to FixItNow!</Text>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+});
